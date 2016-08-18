@@ -15,9 +15,9 @@ for f in funds:
         print(f.code)
 
 
-def insertFund(fund):
+def insertInverst(fund):
     #创建表单
-    sheet=db[fund.code];
+    sheet=db[fund.code]
     for key ,value  in fund.dalprc.items():
         obj={
             "date":key,

@@ -5,8 +5,7 @@ import json
 import jpush
 from jpush import common
 
-from fund.Fund import Fund
-from fund.Inverst import Inverst
+from fund.FundInv import Inverst
 
 _jpush = jpush.JPush("1af8ad4679605e3b54646a14", "e2de3660a168fdf96f098f40")
 push = _jpush.create_push()
@@ -16,7 +15,7 @@ push.audience = jpush.all_
 push.platform = jpush.all_
 
 
-def send(message,alert):
+def send(message, alert):
     android_msg = jpush.android(alert=alert)
     push.notification = jpush.notification(alert=message, android=android_msg)
     try:
@@ -30,9 +29,13 @@ def send(message,alert):
     except:
         print("Exception")
 
-list=[]
-list.append(Inverst("160119",10500))
-list.append(Inverst("160630",10500))
-list.append(Inverst("160630",10500))
-list.append(Inverst("160630",10500.0))
-send("购买基金",json.dumps(list,default=lambda obj:obj.__dict__))
+
+list = []
+list.append({"code": "160119", "amount": 10005})
+list.append({"code": "160119", "amount": 10005})
+list.append({"code": "160119", "amount": 10005})
+# list.append(Inverst("160119", 10500,0))
+# list.append(Inverst("160630", 10500))
+# list.append(Inverst("160630", 10500))
+# list.append(Inverst("160630", 10500.0))
+send("购买基金", json.dumps(list, default=lambda obj: obj.__dict__))
